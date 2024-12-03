@@ -3,7 +3,7 @@
 cd "%~dp0"
 
 :: Run the Python script using Python
-py revised.py
+py runthis.py
 
 :: Pause to keep the window open after execution
 pause
