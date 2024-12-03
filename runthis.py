@@ -1,7 +1,28 @@
+import os
+import sys
+import subprocess
+from importlib.util import find_spec
 from openpyxl import load_workbook
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-import os
+
+# Function to check and install required packages
+def check_and_install_packages(packages):
+    """
+    Ensures the specified packages are installed.
+    If not installed, attempts to install them using pip.
+    """
+    for package in packages:
+        if find_spec(package) is None:
+            print(f"Package '{package}' not found. Installing...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+        else:
+            print(f"Package '{package}' is already installed.")
+
+# Call this function to ensure dependencies are met
+def ensure_dependencies():
+    required_packages = ["openpyxl", "tkinter"]
+    check_and_install_packages(required_packages)
 
 def select_excel_file():
     """Prompts the user to select an Excel file and returns the file path."""
@@ -57,4 +78,7 @@ def process_excel_and_save():
     input("Press Enter to exit...")  # Keep the console open until Enter is pressed
 
 if __name__ == "__main__":
+    # Ensure all dependencies are installed
+    ensure_dependencies()
+    # Process the Excel file
     process_excel_and_save()
