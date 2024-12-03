@@ -38,7 +38,10 @@ def process_excel_and_save():
 
     all_data = []
     rows = list(sheet.iter_rows(values_only=True))
-    for row in rows:
+    for row_index, row in enumerate(rows):
+        col_a_value = str(row[0]) if row[0] is not None else "EMPTY"
+        print(f"Row {row_index + 1}, Column A: {col_a_value}")  # Print Column A value
+        
         formatted_row = format_row(row, total_width_before_last_column, blank_spaces)
         all_data.append(formatted_row)
 
@@ -51,6 +54,7 @@ def process_excel_and_save():
         file.write("\n".join(all_data))
 
     print(f"Processed data saved to {txt_file_path}")
+    input("Press Enter to exit...")  # Keep the console open until Enter is pressed
 
 if __name__ == "__main__":
     process_excel_and_save()
