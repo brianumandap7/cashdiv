@@ -73,10 +73,12 @@ txt_file_path = os.path.join(os.path.dirname(excel_file_path), f"{file_name}_out
 with open(txt_file_path, 'w') as file:
     file.write(formatted_data)
 
-print(f"All data extracted and saved to {txt_file_path}")
+
 
 # Step 7: Display column A in the console
 print("\nColumn A from the processed data:")
 for row in rows:
     col_a_value = str(row[0]) if row[0] is not None else ""
     print(col_a_value)
+
+print(f"All data extracted and saved to {txt_file_path}")
