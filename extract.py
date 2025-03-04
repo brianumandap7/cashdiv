@@ -27,6 +27,6 @@ def process_excel(input_file, output_file):
     print(f"Processed file saved as {output_file}")
 
 # Example usage
-input_file = "testfeb20.xlsx"  # Update with actual file name
+input_file = "f20_in.xlsx"  # Update with actual file name
 output_file = "extracted.xlsx"  # Desired output file name
 process_excel(input_file, output_file)
